@@ -1,6 +1,5 @@
 package com.github.yuchi.semver;
 
-import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -282,14 +281,14 @@ public class Range {
 			}
 			else if (isX(toMinor)) {
 				sb.append("<");
-				sb.append(Integer.parseInt(toMajor) + 1);
+				sb.append(Long.parseLong(toMajor) + 1);
 				sb.append(".0.0");
 			}
 			else if (isX(toPatch)) {
 				sb.append("<");
 				sb.append(toMajor);
 				sb.append(".");
-				sb.append(Integer.parseInt(toMinor) + 1);
+				sb.append(Long.parseLong(toMinor) + 1);
 				sb.append(".0");
 			}
 			else if ((toPR != null) && !toPR.isEmpty()) {
@@ -347,7 +346,7 @@ public class Range {
 				sb.append(">=");
 				sb.append(major);
 				sb.append(".0.0 <");
-				sb.append(Integer.parseInt(major) + 1);
+				sb.append(Long.parseLong(major) + 1);
 				sb.append(".0.0");
 			}
 			else if (isX(patch)) {
@@ -359,7 +358,7 @@ public class Range {
 					sb.append(".0 <"); // SPACE!
 					sb.append(major);
 					sb.append(".");
-					sb.append(Integer.parseInt(minor) + 1);
+					sb.append(Long.parseLong(minor) + 1);
 					sb.append(".0");
 				}
 				else {
@@ -368,7 +367,7 @@ public class Range {
 					sb.append(".");
 					sb.append(minor);
 					sb.append(".0 <");
-					sb.append(Integer.parseInt(minor) + 1);
+					sb.append(Long.parseLong(minor) + 1);
 					sb.append(".0.0");
 				}
 			}
@@ -398,17 +397,17 @@ public class Range {
 						sb.append(".");
 						sb.append(minor);
 						sb.append(".");
-						sb.append(Integer.parseInt(patch) + 1);
+						sb.append(Long.parseLong(patch) + 1);
 					}
 					else {
 						sb.append(major);
 						sb.append(".");
-						sb.append(Integer.parseInt(minor) + 1);
+						sb.append(Long.parseLong(minor) + 1);
 						sb.append(".0");
 					}
 				}
 				else {
-					sb.append(Integer.parseInt(major) + 1);
+					sb.append(Long.parseLong(major) + 1);
 					sb.append(".0.0");
 				}
 			}
@@ -435,7 +434,7 @@ public class Range {
 				sb.append(">=");
 				sb.append(major);
 				sb.append(".0.0 <"); // SPACE!
-				sb.append(Integer.parseInt(major) + 1);
+				sb.append(Long.parseLong(major) + 1);
 				sb.append(".0.0");
 			}
 			else if (isX(patch)) {
@@ -447,7 +446,7 @@ public class Range {
 				sb.append(".0 <"); // SPACE!
 				sb.append(major);
 				sb.append(".");
-				sb.append(Integer.parseInt(minor) + 1);
+				sb.append(Long.parseLong(minor) + 1);
 				sb.append(".0");
 			}
 			else {
@@ -469,7 +468,7 @@ public class Range {
 				sb.append(" <");
 				sb.append(major);
 				sb.append(".");
-				sb.append(Integer.parseInt(minor) + 1);
+				sb.append(Long.parseLong(minor) + 1);
 				sb.append(".0");
 			}
 
@@ -525,12 +524,12 @@ public class Range {
 					gtlt = ">=";
 
 					if (xMinor) {
-						major = String.valueOf(Integer.parseInt(major) + 1);
+						major = String.valueOf(Long.parseLong(major) + 1);
 						minor = "0";
 						patch = "0";
 					}
 					else if (xPatch) {
-						minor = String.valueOf(Integer.parseInt(minor) + 1);
+						minor = String.valueOf(Long.parseLong(minor) + 1);
 						patch = "0";
 					}
 				}
@@ -541,10 +540,10 @@ public class Range {
 					gtlt = "<";
 
 					if (xMinor) {
-						major = String.valueOf(Integer.parseInt(major) + 1);
+						major = String.valueOf(Long.parseLong(major) + 1);
 					}
 					else {
-						minor = String.valueOf(Integer.parseInt(minor) + 1);
+						minor = String.valueOf(Long.parseLong(minor) + 1);
 					}
 				}
 
@@ -559,7 +558,7 @@ public class Range {
 				sb.append(">=");
 				sb.append(major);
 				sb.append(".0.0 <");
-				sb.append(Integer.parseInt(major) + 1);
+				sb.append(Long.parseLong(major) + 1);
 				sb.append(".0.0");
 			}
 			else if (xPatch) {
@@ -570,7 +569,7 @@ public class Range {
 				sb.append(".0 <");
 				sb.append(major);
 				sb.append(".");
-				sb.append(Integer.parseInt(minor) + 1);
+				sb.append(Long.parseLong(minor) + 1);
 				sb.append(".0");
 			}
 			else {
