@@ -46,21 +46,21 @@ public class Version implements Comparable<Version> {
 			throw new IllegalArgumentException("Invalid Version: " + raw);
 		}
 
-		this.major = Integer.parseInt(m.group(1));
+		this.major = Long.parseLong(m.group(1));
 
-		if ((this.major < 0) || (this.major == Integer.MAX_VALUE)) {
+		if ((this.major < 0) || (this.major == Long.MAX_VALUE)) {
 			throw new IllegalArgumentException("Invalid Major Version");
 		}
 
-		this.minor = Integer.parseInt(m.group(2));
+		this.minor = Long.parseLong(m.group(2));
 
-		if ((this.minor < 0) || (this.minor == Integer.MAX_VALUE)) {
+		if ((this.minor < 0) || (this.minor == Long.MAX_VALUE)) {
 			throw new IllegalArgumentException("Invalid Minor Version");
 		}
 
-		this.patch = Integer.parseInt(m.group(3));
+		this.patch = Long.parseLong(m.group(3));
 
-		if ((this.patch < 0) || (this.patch == Integer.MAX_VALUE)) {
+		if ((this.patch < 0) || (this.patch == Long.MAX_VALUE)) {
 			throw new IllegalArgumentException("Invalid Patch Version");
 		}
 
@@ -78,7 +78,7 @@ public class Version implements Comparable<Version> {
 				String part = parts[i];
 
 				if (Constants.NUMERIC.matches(part)) {
-					this.prerelease[i] = Integer.parseInt(part);
+					this.prerelease[i] = Long.parseLong(part);
 				}
 				else {
 					this.prerelease[i] = part;
@@ -119,15 +119,15 @@ public class Version implements Comparable<Version> {
 		this.version = sb.toString();
 	}
 
-	public int getMajor() {
+	public long getMajor() {
 		return this.major;
 	}
 
-	public int getMinor() {
+	public long getMinor() {
 		return this.minor;
 	}
 
-	public int getPatch() {
+	public long getPatch() {
 		return this.patch;
 	}
 
@@ -232,11 +232,11 @@ public class Version implements Comparable<Version> {
 	}
 
 	protected static int compareIdentifiers(Object a, Object b) {
-		boolean anumeric = a instanceof Integer;
-		boolean bnumeric = b instanceof Integer;
+		boolean anumeric = a instanceof Long;
+		boolean bnumeric = b instanceof Long;
 
 		if (anumeric && bnumeric) {
-			return ((Integer)a).compareTo((Integer)b);
+			return ((Long)a).compareTo((Long)b);
 		}
 		else if (!anumeric && !bnumeric) {
 			return ((String)a).compareTo((String)b);
@@ -249,9 +249,9 @@ public class Version implements Comparable<Version> {
 		}
 	}
 
-	protected final int major;
-	protected final int minor;
-	protected final int patch;
+	protected final long major;
+	protected final long minor;
+	protected final long patch;
 	protected final Object[] prerelease;
 	protected final String[] build;
 	protected final String raw;

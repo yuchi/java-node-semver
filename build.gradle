@@ -35,7 +35,6 @@ repositories {
 
 dependencies {
 	testCompile 'junit:junit:4.12'
-	compile 'org.eclipse.jgit:org.eclipse.jgit:3.2.0.201312181205-r'
 }
 
 ext {
